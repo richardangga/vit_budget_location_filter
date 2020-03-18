@@ -1,0 +1,92 @@
+<odoo>
+  <data>
+    <record id="uudp_search" model="ir.ui.view">
+            <field name="name">uudp.search</field>
+            <field name="model">uudp</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="UUDP">
+                    <field name="name" string="Code"/>
+                    <field name="user_id" string="Employee" />
+                    <field name="responsible_id" string="Responsible"/>
+                    <field name="journal_id" string="Journal"/>
+                    <field name="notes" string="Notes"/>
+                    <field name="date" string="Date"/>
+                    <field name="pencairan_id" string="Pencairan"/>
+                    <field name="penyelesaian_id" string="Penyelesaian"/>
+                    <filter string="Sudah Pencairan"
+                                name="sudah_pencairan"
+                                domain="[('pencairan_id','!=',False)]" 
+                                context="{}"/>
+                    <filter string="Belum Pencairan"
+                                name="belum_pencairan"
+                                domain="[('pencairan_id','=',False)]" 
+                                context="{}"/>
+                    <filter string="Sudah Penyelesaian"
+                                name="sudah_penyelesaian"
+                                domain="[('penyelesaian_id','!=',False)]" 
+                                context="{}"/>
+                    <filter string="Belum Penyelesaian" 
+                                name="belum_penyelesaian"
+                                domain="[('penyelesaian_id','=',False)]" 
+                                context="{}"/>
+                    <filter string="Pencairan Parsial"
+                                name="pencairan_parsial"
+                                domain="[('type_pencairan','=','parsial')]" 
+                                context="{}"/>
+                    <filter string="Pencairan Once"
+                                name="pencairan_once"
+                                domain="[('type_pencairan','=','once')]" 
+                                context="{}"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Pencairan"
+                                name="pencairan"
+                                domain="[]" 
+                                context="{'group_by':'pencairan_id'}"/>
+                        <filter string="Tgl Pencairan"
+                                name="tgl_pencairan"
+                                domain="[]" 
+                                context="{'group_by':'tgl_pencairan'}"/>
+                        <filter string="Type Pencairan"
+                                name="type_pencairan"
+                                domain="[]" 
+                                context="{'group_by':'type_pencairan'}"/>
+                        <filter string="Penyelesaian" 
+                                name="penyelesaian"
+                                domain="[]" 
+                                context="{'group_by':'penyelesaian_id'}"/>
+                        <filter string="Tgl Penyelesaian"
+                                name="tgl_penyelesaian"
+                                domain="[]" 
+                                context="{'group_by':'tgl_penyelesaian'}"/>
+                        <filter string="Employee" 
+                                name="employee"
+                                domain="[]" 
+                                context="{'group_by':'user_id'}"/>
+                        <filter string="Responsible"
+                                name="responsible_id"
+                                domain="[]" 
+                                context="{'group_by':'responsible_id'}"/>
+                        <filter string="Department" 
+                                name="department_id"
+                                domain="[]" 
+                                context="{'group_by':'department_id'}"/>
+                        <filter string="State"
+                                name="state"
+                                domain="[]" 
+                                context="{'group_by':'state'}"/>
+                        <filter string="Journal"
+                                name="journal_id"
+                                domain="[]" 
+                                context="{'group_by':'journal_id'}"/>
+                        <filter string="Company" 
+                                name="company_id"
+                                domain="[]" 
+                                context="{'group_by':'company_id'}"/>
+                    </group>
+                </search>
+             </field>
+         </record>
+  </data>
+</odoo>
